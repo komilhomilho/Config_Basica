@@ -1,0 +1,5 @@
+{
+    "opcoes":{
+        "1" : "./funcoes/repo.ps1"
+    }
+}
