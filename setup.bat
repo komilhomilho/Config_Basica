@@ -1,52 +1,51 @@
-@echo off
-cls
-echo =========================================================
-echo   INICIANDO CONFIGURACAO AUTOMATICA DA FACULDADE (CMD)
-echo =========================================================
+Write-Host "=========================================================" -ForegroundColor Cyan
+Write-Host "⚙️  INICIANDO CONFIGURAÇÃO AUTOMÁTICA DA FACULDADE (POWERSHELL)" -ForegroundColor Cyan
+Write-Host "=========================================================" -ForegroundColor Cyan
 
-:: 1. Configura sua identidade global na maquina
+# 1. Configura sua identidade global na máquina da faculdade
 git config --global user.name "komilhomilho"
 git config --global user.email "alexpieetro@gmail.com"
 git config --global credential.helper manager
-echo [OK] Identidade global configurada!
+Write-Host "✅ Identidade global configurada!" -ForegroundColor Green
 
-:: 2. Cria o atalho 'git salvar' adaptado para rodar no CMD do Windows
-git config --global alias.salvar "!git add . && git commit -m \"Auto commit: %%date%% %%time%%\" && git push"
-echo [OK] Atalho 'git salvar' criado para uso geral.
+# 2. Cria o atalho 'git salvar' adaptado para rodar perfeitamente no PowerShell/Windows
+git config --global alias.salvar "!git add . && git commit -m \"Auto commit: \$(date '+%d/%m/%Y %H:%M:%S')\" && git push"
+Write-Host "🚀 Atalho 'git salvar' criado para uso geral." -ForegroundColor Green
 
-echo ---------------------------------------------------------
-echo   Atualizando o historico do Config_Basica via CMD...
-echo ---------------------------------------------------------
+Write-Host "---------------------------------------------------------"
+Write-Host "📝 Atualizando o histórico do Config_Basica via Script..."
+Write-Host "---------------------------------------------------------"
 
-:: 3. Entra na pasta do usuario do Windows e cria uma pasta temporaria
-cd %USERPROFILE%
-if exist .tmp_config rmdir /s /q .tmp_config
-mkdir .tmp_config
-cd .tmp_config
+# 3. Define uma pasta temporária segura no perfil do usuário
+$tmpFolder = "$HOME\.tmp_config"
+if (Test-Path $tmpFolder) { Remove-Item -Recurse -Force $tmpFolder }
+New-Item -ItemType Directory -Path $tmpFolder | Out-Null
+Set-Location $tmpFolder
 
-:: 4. Clona o seu repositorio
-git clone "https://github.com/komilhomilho/Config_Basica/"
-cd Config_Basica
+# 4. Clona o seu repositório de forma limpa
+git clone "https://github.com/komilhomilho/Config_Basica"
+Set-Location .\Config_Basica
 
-:: 5. Pega a data e hora atual do Windows e salva no arquivo
-echo Acesso registrado em: %date% %time% >> historico_acesso.txt
+# 5. Registra a data e hora atual do sistema no histórico
+$dataAtual = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
+"Acesso registrado em: $dataAtual" | Out-File -FilePath .\historico_acesso.txt -Append
 
-:: 6. Faz o commit local
+# 6. Faz o commit local
 git add historico_acesso.txt
-git commit -m "Auto commit: %date% %time%"
+git commit -m "Auto commit: $dataAtual"
 
-echo.
-echo  ATENCAO: A janela de login do GitHub vai abrir no seu navegador.
-echo  Faca o login para autorizar o envio do commit do setup!
-echo.
+Write-Host ""
+Write-Host "🔐 ATENÇÃO: A janela de login do GitHub vai abrir no seu navegador." -ForegroundColor Yellow
+Write-Host "👉 Faça o login para autorizar o envio do commit do setup!" -ForegroundColor Yellow
+Write-Host ""
 
-:: 7. Faz o upload para o GitHub (abrindo a tela de login)
+# 7. Faz o push para o GitHub (abrindo a tela de login via Web do Windows)
 git push origin main
 
-:: 8. Limpa os arquivos temporarios criados na maquina da faculdade
-cd %USERPROFILE%
-rmdir /s /q .tmp_config
+# 8. Limpa os arquivos temporários da máquina ao terminar
+Set-Location $HOME
+Remove-Item -Recurse -Force $tmpFolder
 
-echo =========================================================
-echo   CONFIGURACAO CONCLUIDA E HORARIO REGISTRADO NO GITHUB!
-echo =========================================================
+Write-Host "=========================================================" -ForegroundColor Green
+Write-Host "🎉 CONFIGURAÇÃO CONCLUÍDA E HORÁRIO REGISTRADO NO GITHUB!" -ForegroundColor Green
+Write-Host "=========================================================" -ForegroundColor Green
