@@ -23,7 +23,7 @@ echo "---------------------------------------------------------"
 cd /tmp
 
 # 4. Clona o seu repositório de configuração de forma silenciosa
-git clone -q https://github.com/komilhomilho/Config_Basica
+git clone -q "https://github.com/komilhomilho/Config_Basica"
 cd Config_Basica
 
 # 5. Registra a data e hora atual em um arquivo chamado historico_acesso.txt
