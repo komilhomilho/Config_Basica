@@ -8,7 +8,7 @@ git config --global user.email "alexpieetro@gmail.com"
 git config --global credential.helper manager
 Write-Host "✅ Identidade global configurada!" -ForegroundColor Green
 
-# 2. Cria o alias 'git salvar' usando aspas de escape do PowerShell para não bugar a string
+# 2. Cria o alias 'git salvar' usando aspas simples literais para o PowerShell não processar nada
 git config --global alias.salvar '!git add . && git commit -m "Auto commit: $(date +%d/%m/%Y\ %H:%M:%S)" && git push'
 Write-Host "🚀 Atalho 'git salvar' criado para uso geral." -ForegroundColor Green
 
