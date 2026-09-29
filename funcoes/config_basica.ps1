@@ -44,10 +44,11 @@ function config_basica {
     git push origin main
 
     # 8. Limpa os rastros
-    Set-Location $HOME
-    cmd /c rmdir /s /q $tmpFolder
+    if (Test-Path $tmpFolder) { Remove-Item -Path $tmpFolder -Recurse -Force }
 
     Write-Host "=========================================================" -ForegroundColor Green
     Write-Host " CONFIGURAÇÃO CONCLUÍDA E HORÁRIO REGISTRADO NO GITHUB!" -ForegroundColor Green
     Write-Host "=========================================================" -ForegroundColor Green
 }
+
+config_basica

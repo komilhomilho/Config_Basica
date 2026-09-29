@@ -1,5 +1,5 @@
 Set-Location $HOME
-if (Test-Path ".\Config_Basica"){
+if (Test-Path ".\Config_Basica") {
     Remove-Item -Recurse -Force .\Config_Basica
 }
 if (-not (Test-Path ".\Config_Basica")) {
@@ -16,20 +16,29 @@ foreach ($caminho in $caminhosJson.opcoes) {
 }
 $menuAtivo = $true
 $contador = 1
-while($menuAtivo){
+while ($menuAtivo) {
     Write-Host "=============================================================" -ForegroundColor Cyan
     Write-Host "          FERRAMENTAS DO GIT        " -ForegroundColor White
     Write-Host "=============================================================" -ForegroundColor Cyan
-    foreach($nome in $caminhos){
-        Write-Host "$contador. "(Get-Item $nome).BaseName
+    foreach ($nome in $caminhos) {
+        Write-Host $contador". "(Get-Item $nome).BaseName
         $contador++
     }
     Write-Host "=============================================================" -ForegroundColor Cyan
 
-    $escolha = Read-Host "Digite o numero desejado: "
+    $escolha = Read-Host "Digite o numero desejado"
+    $escolha = [int]$escolha
+
+    $escolha -= 1 
+
+    $arquivoEscolhido = $caminhos[$escolha]
+    . $arquivoEscolhido
+    $arquivoEscolhido = [System.IO.Path]::GetFileNameWithoutExtension($arquivoEscolhido)
+    & $arquivoEscolhido
+    
     
     Write-Host "" # Pula uma linha para o resultado ficar mais legível
-
+    $contador = 1
 }
 
 Write-Host "Caminhos salvos no array:" -ForegroundColor Cyan
