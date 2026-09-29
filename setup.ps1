@@ -1,12 +1,14 @@
-git clone "https://github.com/komilhomilho/Config_Basica"
+if (-not (Test-Path ".\Config_Basica")) {
+    git clone "https://github.com/komilhomilho/Config_Basica"
+}
 Set-Location .\Config_Basica
-$caminhos = @()
 
+$caminhos = @()
 $caminhosJson = Get-Content -Path "./caminho_arquivos.json" -Raw | ConvertFrom-Json
 
-foreach($caminho in $caminhosJson.opcoes){
-    $caminhos += Resolve-Path caminho
+foreach ($caminho in $caminhosJson.opcoes) {
+    $caminhos += (Resolve-Path caminho).Path
 }
 
-Write-Host "Caminhos salvos no array:"
+Write-Host "Caminhos salvos no array:" -ForegroundColor Cyan
 $caminhos
