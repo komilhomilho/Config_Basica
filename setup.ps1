@@ -7,3 +7,6 @@ $caminhosJson = Get-Content -Path "./caminho_arquivos.json" -Raw | ConvertFrom-J
 foreach($caminho in $caminhosJson.opcoes){
     $caminhos += Resolve-Path caminho
 }
+
+Write-Host "Caminhos salvos no array:"
+$caminhos
