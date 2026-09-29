@@ -15,14 +15,20 @@ foreach ($caminho in $caminhosJson.opcoes) {
     $caminhos += $caminhoAbsoluto
 }
 $menuAtivo = $true
+$contador = 1
 while($menuAtivo){
-    Write-Host "========================================" -ForegroundColor Cyan
-    Write-Host "          FERRAMENTAS DO GIT        " -ForegroundColor White -BackgroundColor DarkBlue
-    Write-Host "========================================" -ForegroundColor Cyan
+    Write-Host "=============================================================" -ForegroundColor Cyan
+    Write-Host "          FERRAMENTAS DO GIT        " -ForegroundColor White
+    Write-Host "=============================================================" -ForegroundColor Cyan
     foreach($nome in $caminhos){
-        Write-Host (Get-Item $nome).BaseName
+        Write-Host "$contador. "(Get-Item $nome).BaseName
+        $contador++
     }
-    Write-Host "========================================" -ForegroundColor Cyan
+    Write-Host "=============================================================" -ForegroundColor Cyan
+
+    $escolha = Read-Host "Digite o numero desejado: "
+    
+    Write-Host "" # Pula uma linha para o resultado ficar mais legível
 
 }
 
