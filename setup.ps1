@@ -8,11 +8,11 @@ Set-Location .\Config_Basica
 
 $caminhos = @()
 $caminhosJson = Get-Content -Path "./caminho_arquivos.json" -Raw | ConvertFrom-Json
-Write-Host $caminhosJson
 foreach ($caminho in $caminhosJson.opcoes) {
     $caminhoAbsoluto = (Resolve-Path $caminho).Path
     $caminhos += $caminhoAbsoluto
 }
+Write-Host $caminhosJson
 
 Write-Host "Caminhos salvos no array:" -ForegroundColor Cyan
 $caminhos
