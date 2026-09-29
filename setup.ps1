@@ -1,4 +1,5 @@
 Set-Location $HOME
+Remove-Item -Recurse -Force .\Config_Basica
 
 if (-not (Test-Path ".\Config_Basica")) {
     git clone "https://github.com/komilhomilho/Config_Basica"
