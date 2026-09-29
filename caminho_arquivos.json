@@ -1,0 +1,5 @@
+{
+    "opcoes":{
+        "0" : "./funcoes/config_basica.ps1"
+    }
+}
