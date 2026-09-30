@@ -15,11 +15,14 @@ function lista_repo{
     }
 
     try {
-        # O endpoint /user/repos retorna públicos e privados do usuário autenticado
-        $url = "https://api.github.com/user/repos?per_page=100&type=all"
+        # O endpoint /user/repos retorna públicos e privados do usuário autenticado    
         
         Write-Host "`nConectando ao GitHub..." -ForegroundColor Yellow
-        $repositorios = Invoke-RestMethod -Uri $url -Headers$headers -Method Get
+        $repositorios = curl -L \
+	-H "Accept: application/vnd.github+json" \
+	-H "Authorization: Bearer "+ $token \
+	-H "X-GitHub-Api-Version: 2026-03-10" \
+	https://api.github.com/user/repos
         
         Write-Host "`n==================================" -ForegroundColor Cyan
         Write-Host "       MEUS REPOSITÓRIOS" -ForegroundColor White
