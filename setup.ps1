@@ -1,10 +1,10 @@
 Set-Location $HOME
-#if (Test-Path ".\Config_Basica") {
-   # Remove-Item -Recurse -Force .\Config_Basica
-#}
-#if (-not (Test-Path ".\Config_Basica")) {
-    #git clone "https://github.com/komilhomilho/Config_Basica"
-#}
+if (Test-Path ".\Config_Basica") {
+    Remove-Item -Recurse -Force .\Config_Basica
+}
+if (-not (Test-Path ".\Config_Basica")) {
+    git clone "https://github.com/komilhomilho/Config_Basica"
+}
 Set-Location .\Config_Basica
 
 $caminhos = @()

@@ -1,4 +1,4 @@
-function lista_repo {
+function lista_repo{
     Clear-Host
     Write-Host "--- Consulta de Repositórios GitHub ---" -ForegroundColor Cyan
     
