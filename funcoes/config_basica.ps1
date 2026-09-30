@@ -50,5 +50,4 @@ function config_basica {
     Write-Host " CONFIGURAÇÃO CONCLUÍDA E HORÁRIO REGISTRADO NO GITHUB!" -ForegroundColor Green
     Write-Host "=========================================================" -ForegroundColor Green
 }
-
 config_basica
