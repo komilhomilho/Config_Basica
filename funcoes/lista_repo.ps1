@@ -1,4 +1,5 @@
-function lista_repo{
+
+function lista_repo {
     Clear-Host
     Write-Host "--- Consulta de Repositórios GitHub ---" -ForegroundColor Cyan
     
@@ -8,21 +9,20 @@ function lista_repo{
     # Converte a senha segura de volta para texto para poder enviar para a API
     $token = [System.Net.NetworkCredential]::new("", $tokenSeguro).Password
 
-    # Cabeçalhos obrigatórios para a API do GitHub
-    $headers = @{
-        Authorization = "token $token"
-        Accept = "application/vnd.github.v3+json"
-    }
-
     try {
-        # O endpoint /user/repos retorna públicos e privados do usuário autenticado    
-        
         Write-Host "`nConectando ao GitHub..." -ForegroundColor Yellow
-        $repositorios = curl -L \
-	-H "Accept: application/vnd.github+json" \
-	-H "Authorization: Bearer "+ $token \
-	-H "X-GitHub-Api-Version: 2026-03-10" \
-	https://api.github.com/user/repos
+        
+        # 1. Usamos a crase (`) para quebrar linha
+        # 2. O token vai direto dentro das aspas
+        # 3. Adicionei o -s (silent) para o curl não sujar a tela com a barra de download
+        $respostaCurl = curl -s -L `
+            -H "Accept: application/vnd.github+json" `
+            -H "Authorization: Bearer $token" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            https://api.github.com/user/repos
+        
+        # Converte o texto JSON que o curl devolveu para um objeto do PowerShell
+        $repositorios =$respostaCurl | ConvertFrom-Json
         
         Write-Host "`n==================================" -ForegroundColor Cyan
         Write-Host "       MEUS REPOSITÓRIOS" -ForegroundColor White
