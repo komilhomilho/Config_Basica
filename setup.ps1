@@ -34,8 +34,6 @@ while ($menuAtivo) {
 
     $arquivoEscolhido = $caminhos[$escolha]
     . $arquivoEscolhido
-    $arquivoEscolhido = [System.IO.Path]::GetFileNameWithoutExtension($arquivoEscolhido)
-    & $arquivoEscolhido
     
     
     Write-Host "" # Pula uma linha para o resultado ficar mais legível
