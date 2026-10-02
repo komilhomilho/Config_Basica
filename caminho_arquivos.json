@@ -1,7 +1,0 @@
-{
-    "opcoes":[
-	"./funcoes/sair.ps1",
-        "./funcoes/config_basica.ps1",
-        "./funcoes/lista_repo.ps1"
-    ]
-}

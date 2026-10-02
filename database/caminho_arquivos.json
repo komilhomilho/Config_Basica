@@ -1,0 +1,10 @@
+{
+    "opcoes":  [
+                   "./funcoes/AtualizarMenuJson.ps1",
+                   "./funcoes/CarregarDadoNaRAM.ps1",
+                   "./funcoes/config_basica.ps1",
+                   "./funcoes/criptografarDados.ps1",
+                   "./funcoes/lista_repo.ps1",
+                   "./funcoes/sair.ps1"
+               ]
+}
