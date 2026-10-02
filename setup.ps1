@@ -1,4 +1,5 @@
 Set-Location $HOME
+
 if (Test-Path ".\Config_Basica") {
     Remove-Item -Recurse -Force .\Config_Basica
 }
@@ -8,7 +9,7 @@ if (-not (Test-Path ".\Config_Basica")) {
 Set-Location .\Config_Basica
 
 $caminhos = @()
-$caminhosJson = Get-Content -Path "./caminho_arquivos.json" -Raw | ConvertFrom-Json
+$caminhosJson = Get-Content -Path "./database/caminho_arquivos.json" -Raw | ConvertFrom-Json
 
 foreach ($caminho in $caminhosJson.opcoes) {
     $caminhoAbsoluto = (Resolve-Path $caminho).Path
