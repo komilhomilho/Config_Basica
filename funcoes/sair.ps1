@@ -17,7 +17,9 @@ function sair{
 
     Write-Host "Memoria limpa com sucesso. Saindo..." -ForegroundColor Green
     Start-Sleep -Seconds 1
-    exit
+    
+    # Isso manda o sistema operacional matar a janela do PowerShell na hora
+    [Environment]::Exit(0)
 }
 
 sair
