@@ -2,7 +2,7 @@ function sair{
     param()
     Write-Host "Limpando rastros na memoria..." -ForegroundColor Yellow
 
-    $caminhoArquivo = "./database/dadosCriptografados.json"
+    $caminhoArquivo = "$PSScriptRoot/../database/dadosCriptografados.json"
     
     if (Test-Path $caminhoArquivo) {
         $dadosJson = Get-Content -Path $caminhoArquivo -Raw | ConvertFrom-Json

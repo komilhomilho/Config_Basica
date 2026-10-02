@@ -10,7 +10,7 @@ function criptografarDados {
             continue # Volta pro inicio do loop
         }
 
-        $caminhoArquivo = "../database/dadosCriptografados.json"
+        $caminhoArquivo = "$PSScriptRoot/../database/dadosCriptografados.json"
         $pasta = Split-Path $caminhoArquivo
 
         # Garante que a pasta existe

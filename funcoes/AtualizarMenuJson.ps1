@@ -2,7 +2,7 @@ function AtualizarMenuJson {
     # 1. Define onde estão as funções e onde o JSON será salvo
     # Usamos caminhos relativos (.) para funcionar em qualquer PC (Linux ou Windows)
     $pastaFuncoes = "../funcoes"
-    $caminhoJson = "../database/caminho_arquivos.json"
+    $caminhoJson = "$PSScriptRoot/../database/caminho_arquivos.json"
 
     # Verifica se a pasta funcoes existe
     if (-not (Test-Path $pastaFuncoes)) {

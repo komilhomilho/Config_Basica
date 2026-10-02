@@ -1,6 +1,6 @@
 function CarregarDadoNaRAM {
     # Ajuste o caminho se precisar rodar de outro diretorio
-    $caminhoArquivo = "../database/dadosCriptografados.json"
+    $caminhoArquivo = "$PSScriptRoot/../database/dadosCriptografados.json"
 
     # 1. Verifica se o arquivo existe
     if (-not (Test-Path $caminhoArquivo)) {

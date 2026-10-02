@@ -3,7 +3,7 @@ function lista_repo {
     Write-Host "--- Consulta de Repositorios GitHub ---" -ForegroundColor Cyan
     
     # O -AsSecureString esconde a senha enquanto voce digita no terminal
-    $caminhoArquivo = "../database/dadosCriptografados.json" 
+    $caminhoArquivo = "$PSScriptRoot/../database/dadosCriptografados.json" 
     $dadosJson = Get-Content -Path $caminhoArquivo -Raw | ConvertFrom-Json
 
     if (-not $dadosJson.dadosCriptografados) {
